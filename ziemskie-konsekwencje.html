@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziemskie Konsekwencje - UWAGA!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #ff0000;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .scary-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .scary-header {
+            font-family: 'Creepster', cursive;
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            animation: pulse 2s infinite, shake 0.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        
+        .scary-image-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            border: 5px solid #ff0000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px #ff0000;
+            animation: imageShake 3s infinite;
+        }
+        
+        @keyframes imageShake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(2deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        .scary-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(150%) hue-rotate(30deg) saturate(2);
+        }
+        
+        .smoke-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .smoke {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 0, 0, 0.4);
+            border-radius: 50%;
+            filter: blur(15px);
+            z-index: 10;
+            animation: scarySmoke 3s ease-out infinite;
+        }
+        
+        @keyframes scarySmoke {
+            0% {
+                opacity: 0;
+                transform: translateY(140px) translateX(130px) scale(1);
+            }
+            25% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(50px) translateX(80px) scale(3);
+            }
+            75% {
+                opacity: 0.8;
+                transform: translateY(30px) translateX(100px) scale(5);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0px) translateX(150px) scale(7);
+            }
+        }
+        
+        .smoke:nth-child(1) { animation-delay: 0s; }
+        .smoke:nth-child(2) { animation-delay: 1s; }
+        .smoke:nth-child(3) { animation-delay: 2s; }
+        
+        .scary-description {
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px #ff0000;
+            animation: textFlicker 3s infinite;
+        }
+        
+        @keyframes textFlicker {
+            0% { text-shadow: 0 0 5px #ff0000; }
+            5% { text-shadow: 0 0 15px #ff0000; }
+            10% { text-shadow: 0 0 5px #ff0000; }
+            15% { text-shadow: 0 0 15px #ff0000; }
+            20% { text-shadow: 0 0 5px #ff0000; }
+            100% { text-shadow: 0 0 5px #ff0000; }
+        }
+        
+        .consequences {
+            background-color: rgba(50, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px dashed #ff0000;
+        }
+        
+        .consequences h3 {
+            font-family: 'Creepster', cursive;
+            font-size: 30px;
+            margin-top: 0;
+        }
+        
+        .consequences ul {
+            text-align: left;
+            font-size: 18px;
+        }
+        
+        .go-back {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ff0000;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px #ff0000;
+        }
+        
+        .go-back:hover {
+            background-color: #ff5555;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff0000;
+        }
+        
+        /* Flying objects animation */
+        .flying-object {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23ff0000"/><path d="M30,40 L70,60 M30,60 L70,40" stroke="%23000" stroke-width="5"/></svg>');
+            background-size: contain;
+            z-index: 1000;
+            animation: fly 10s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translate(-100px, -100px) rotate(0deg);
+            }
+            100% {
+                transform: translate(calc(100vw + 100px), calc(100vh + 100px)) rotate(360deg);
+            }
+        }
+        
+        .flying-object:nth-child(1) {
+            animation-duration: 15s;
+            animation-delay: 1s;
+        }
+        
+        .flying-object:nth-child(2) {
+            animation-duration: 10s;
+            animation-delay: 5s;
+        }
+        
+        .flying-object:nth-child(3) {
+            animation-duration: 12s;
+            animation-delay: 8s;
+        }
+        
+        /* Background effect */
+        .background-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0.8),
+                rgba(0, 0, 0, 0.8) 10px,
+                rgba(20, 0, 0, 0.8) 10px,
+                rgba(20, 0, 0, 0.8) 20px
+            );
+            z-index: -1;
+            animation: backgroundMove 30s linear infinite;
+        }
+        
+        @keyframes backgroundMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background effect -->
+    <div class="background-effect"></div>
+    
+    <!-- Flying objects -->
+    <div class="flying-object"></div>
+    <div class="flying-object"></div>
+    <div class="flying-object"></div>
+    
+    <div class="scary-container">
+        <h1 class="scary-header">KONSEKWENCJE TWOICH WYBORÓW!</h1>
+        
+        <div class="scary-image-container">
+            <img src="543543.png" alt="Przerażający palacz" class="scary-image">
+            <div class="smoke-effect">
+                <div class="smoke"></div>
+                <div class="smoke"></div>
+                <div class="smoke"></div>
+            </div>
+        </div>
+        
+        <div class="scary-description">
+            <p>Oto co się dzieje, gdy wybierasz ziemskie pokusy! Ten nieszczęśnik wybrał drogę nałogu i teraz musi zmierzyć się z PRZERAŻAJĄCYMI konsekwencjami!</p>
+            <p>Każdy papieros skraca życie o 11 minut, a Twoje o całą wieczność rozrywki!</p>
+        </div>
+        
+        <div class="consequences">
+            <h3>NIEUNIKNIONE KONSEKWENCJE:</h3>
+            <ul>
+                <li>Włosy jak po porażeniu prądem - woda się boi zbliżyć!</li>
+                <li>Oczy jak u smutnego szczeniaka, który właśnie zrozumiał, że spacer się nie odbędzie</li>
+                <li>Skóra tak fascynująca, że dermatolog chce napisać o niej pracę doktorską</li>
+                <li>Zapach tak wyjątkowy, że ludzie robią miejsce w autobusie</li>
+                <li>Głos tak charyzmatyczny, że ludzie nie wiedzą czy kaszlesz czy próbujesz rapować</li>
+            </ul>
+        </div>
+        
+        <a href="lichwala.html" class="go-back">WRÓĆ I WYBIERZ JESZCZE RAZ (JEŚLI MASZ ODWAGĘ!)</a>
+    </div>
+    
+    <script>
+        // Add more animation and effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Random flash effect
+            setInterval(function() {
+                if (Math.random() > 0.9) {
+                    document.body.style.backgroundColor = "#300";
+                    setTimeout(function() {
+                        document.body.style.backgroundColor = "#000";
+                    }, 100);
+                }
+            }, 2000);
+            
+            // Add random flying cigarettes
+            for (let i = 0; i < 5; i++) {
+                setTimeout(function() {
+                    const cigarette = document.createElement('div');
+                    cigarette.className = 'flying-object';
+                    cigarette.style.top = Math.random() * 100 + 'vh';
+                    cigarette.style.left = Math.random() * 100 + 'vw';
+                    cigarette.style.animationDuration = (10 + Math.random() * 10) + 's';
+                    cigarette.style.animationDelay = (Math.random() * 5) + 's';
+                    document.body.appendChild(cigarette);
+                }, i * 1000);
+            }
+        });
+    </script>
+</body>
+</html>

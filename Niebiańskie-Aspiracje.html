@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niebiańskie Aspiracje - Błogosławieństwo!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7ff;
+            color: #4169E1;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .heavenly-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .heavenly-header {
+            font-family: 'Dancing Script', cursive;
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #87CEFA, 0 0 20px #87CEFA;
+            animation: float 3s infinite, glow 2s infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #87CEFA, 0 0 20px #87CEFA; }
+            50% { text-shadow: 0 0 15px #87CEFA, 0 0 30px #87CEFA, 0 0 40px white; }
+            100% { text-shadow: 0 0 10px #87CEFA, 0 0 20px #87CEFA; }
+        }
+        
+        .heavenly-image-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            border: 5px solid #87CEFA;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 30px #87CEFA;
+            animation: imagePulse 4s infinite;
+        }
+        
+        @keyframes imagePulse {
+            0% { box-shadow: 0 0 30px #87CEFA; transform: scale(1); }
+            50% { box-shadow: 0 0 50px #87CEFA, 0 0 70px white; transform: scale(1.05); }
+            100% { box-shadow: 0 0 30px #87CEFA; transform: scale(1); }
+        }
+        
+        .heavenly-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(105%) saturate(1.2);
+        }
+        
+        .halo-effect {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            animation: haloGlow 3s infinite;
+        }
+        
+        @keyframes haloGlow {
+            0% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+            100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+        }
+        
+        .wing {
+            position: absolute;
+            width: 100px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.7);
+            filter: blur(5px);
+            z-index: 10;
+            animation: wingFlap 5s ease-in-out infinite;
+        }
+        
+        .wing-left {
+            top: 50px;
+            left: -60px;
+            transform-origin: right center;
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+        }
+        
+        .wing-right {
+            top: 50px;
+            right: -60px;
+            transform-origin: left center;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+        
+        @keyframes wingFlap {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-15deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        .heavenly-description {
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px #87CEFA;
+            animation: textPulse 4s infinite;
+        }
+        
+        @keyframes textPulse {
+            0% { text-shadow: 0 0 5px #87CEFA; }
+            50% { text-shadow: 0 0 10px #87CEFA, 0 0 15px white; }
+            100% { text-shadow: 0 0 5px #87CEFA; }
+        }
+        
+        .benefits {
+            background-color: rgba(224, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #87CEFA;
+        }
+        
+        .benefits h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+            margin-top: 0;
+        }
+        
+        .benefits ul {
+            text-align: left;
+            font-size: 18px;
+        }
+        
+        .go-back {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #87CEFA;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            border: 2px solid white;
+            box-shadow: 0 0 10px #87CEFA;
+        }
+        
+        .go-back:hover {
+            background-color: #4169E1;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #87CEFA;
+        }
+        
+        /* Flying objects animation */
+        .floating-feather {
+            position: fixed;
+            width: 30px;
+            height: 80px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 80"><path d="M15,0 C15,0 0,20 0,50 C0,65 15,80 15,80 C15,80 30,65 30,50 C30,20 15,0 15,0 Z" fill="white"/></svg>');
+            background-size: contain;
+            z-index: 1000;
+            opacity: 0.7;
+            animation: featherFloat 20s linear infinite;
+        }
+        
+        @keyframes featherFloat {
+            0% {
+                transform: translate(calc(-100vw), calc(100vh)) rotate(0deg);
+            }
+            25% {
+                transform: translate(calc(-50vw), calc(50vh)) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 0) rotate(180deg);
+            }
+            75% {
+                transform: translate(calc(50vw), calc(-50vh)) rotate(270deg);
+            }
+            100% {
+                transform: translate(calc(100vw), calc(-100vh)) rotate(360deg);
+            }
+        }
+        
+        .floating-feather:nth-child(1) { animation-duration: 25s; animation-delay: 0s; }
+        .floating-feather:nth-child(2) { animation-duration: 20s; animation-delay: 5s; }
+        .floating-feather:nth-child(3) { animation-duration: 22s; animation-delay: 10s; }
+        .floating-feather:nth-child(4) { animation-duration: 18s; animation-delay: 15s; }
+        
+        /* Background effect */
+        .background-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(135, 206, 250, 0.3) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(135, 206, 250, 0.3) 100%);
+            z-index: -1;
+            animation: backgroundPulse 10s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundPulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        .cloud {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.8;
+            z-index: -1;
+            animation: cloudDrift 30s linear infinite;
+        }
+        
+        @keyframes cloudDrift {
+            0% { transform: translateX(-100vw); }
+            100% { transform: translateX(100vw); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background effect -->
+    <div class="background-effect"></div>
+    
+    <!-- Clouds -->
+    <div class="cloud" style="width: 300px; height: 100px; top: 100px;"></div>
+    <div class="cloud" style="width: 200px; height: 80px; top: 300px; animation-delay: 5s;"></div>
+    <div class="cloud" style="width: 250px; height: 90px; top: 500px; animation-delay: 10s;"></div>
+    
+    <!-- Floating feathers -->
+    <div class="floating-feather"></div>
+    <div class="floating-feather"></div>
+    <div class="floating-feather"></div>
+    <div class="floating-feather"></div>
+    
+    <div class="heavenly-container">
+        <h1 class="heavenly-header">NIEBIAŃSKIE BŁOGOSŁAWIEŃSTWO!</h1>
+        
+        <div class="heavenly-image-container">
+            <div class="halo-effect"></div>
+            <img src="3453454.png" alt="Niebiański Anioł" class="heavenly-image">
+            <div class="wing wing-left"></div>
+            <div class="wing wing-right"></div>
+        </div>
+        
+        <div class="heavenly-description">
+            <p>Oto co się dzieje, gdy wybierasz drogę aspiracji! Ten szczęśliwiec wybrał ścieżkę duchowego rozwoju i teraz cieszy się NIEBIAŃSKIMI korzyściami!</p>
+            <p>Każdy akt dobroci dodaje promień blasku do Twojej aury, a Twoja dusza unosi się na skrzydłach czystości!</p>
+        </div>
+        
+        <div class="benefits">
+            <h3>NIEBIAŃSKIE PRZYWILEJE:</h3>
+            <ul>
+                <li>Fryzura zawsze idealna - nawet w najsilniejszym wietrze!</li>
+                <li>Skóra tak promienna, że oszczędzasz na lampkach nocnych</li>
+                <li>Poza tak doskonała, że instruktorzy jogi pytają o Twoje sekrety</li>
+                <li>Aura tak pozytywna, że kwiaty obracają się ku Tobie zamiast ku słońcu</li>
+                <li>Głos tak melodyjny, że ptaki przestają śpiewać by Cię posłuchać</li>
+                <li>Zdolność lewitacji do 3 cm nad ziemią (świetna do unikania kałuż)</li>
+            </ul>
+        </div>
+        
+        <a href="lichwala.html" class="go-back">WRÓĆ I POCHWAL SIĘ SWOIM WYBOREM</a>
+    </div>
+    
+    <script>
+        // Add more animation and effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add random glowing stars
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.style.position = 'fixed';
+                star.style.width = '3px';
+                star.style.height = '3px';
+                star.style.backgroundColor = 'white';
+                star.style.borderRadius = '50%';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.opacity = Math.random();
+                star.style.zIndex = '-1';
+                
+                // Add twinkling animation
+                star.style.animation = `twinkle ${2 + Math.random() * 3}s infinite`;
+                document.body.appendChild(star);
+            }
+            
+            // Create twinkling style
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes twinkle {
+                    0% { opacity: 0.3; }
+                    50% { opacity: 1; box-shadow: 0 0 10px white, 0 0 20px #87CEFA; }
+                    100% { opacity: 0.3; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add random light rays effect
+            setInterval(function() {
+                if (Math.random() > 0.9) {
+                    const ray = document.createElement('div');
+                    ray.style.position = 'fixed';
+                    ray.style.top = '0';
+                    ray.style.left = Math.random() * 100 + 'vw';
+                    ray.style.width = '3px';
+                    ray.style.height = '100vh';
+                    ray.style.background = 'linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0))';
+                    ray.style.zIndex = '0';
+                    ray.style.opacity = '0';
+                    ray.style.transition = 'opacity 2s';
+                    document.body.appendChild(ray);
+                    
+                    setTimeout(() => { ray.style.opacity = '0.8'; }, 100);
+                    setTimeout(() => { 
+                        ray.style.opacity = '0';
+                        setTimeout(() => {
+                            ray.remove();
+                        }, 2000);
+                    }, 1000);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
